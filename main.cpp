@@ -9,6 +9,7 @@
 using namespace std;
 using boost::filesystem::path;
 using boost::filesystem::is_directory;
+int64 nSubsidy = 1 * COIN;
 
 
 int main(int ac, const char* av[])
@@ -55,7 +56,7 @@ int main(int ac, const char* av[])
              << endl;
         return 1;
     }
-
+    static const int64 nTargetSpacing = 120; // PuffCoin: двухминутный блок
     blockchain_path = xmreg::remove_trailing_path_separator(blockchain_path);
 
     cout << "Blockchain path: " << blockchain_path << endl;
@@ -63,8 +64,8 @@ int main(int ac, const char* av[])
     // set  monero log output level
     uint32_t log_level = 0;
     mlog_configure("", true);
-
-
+    static const int64 nTargetTimespan = 1 * 24 * 60 * 60;
+    static const int64 MAX_MONEY = 10000 * COIN
     // create instance of our MicroCore
     // and make pointer to the Blockchain
     xmreg::MicroCore mcore;
